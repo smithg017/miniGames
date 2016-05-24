@@ -1,0 +1,7 @@
+package components;
+
+public class Player 
+{
+	private int x, y, velX, velY;
+	
+}
