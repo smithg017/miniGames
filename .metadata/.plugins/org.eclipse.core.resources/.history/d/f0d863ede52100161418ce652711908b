@@ -1,0 +1,51 @@
+package components;
+
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+
+public class Field extends JPanel implements ActionListener
+{
+	
+	private static final long serialVersionUID = -6805038923918428732L;
+	private double width, height;
+	private double locX, locY;
+	private int gridSize;
+	private double blockSizeX, blockSizeY;
+	
+	public Field()
+	{
+		width = 640;
+		height = 480;
+		gridSize = 12;
+		locX = 200;
+		locY = 100;
+		init();
+	}
+	public Field(int w, int h, int gS, double lX, double lY)
+	{
+		width = w;
+		height = h;
+		gridSize = gS;
+		locX = lX;
+		locY = lY;
+		init();
+	}
+	private void init()
+	{
+		blockSizeX = width/gridSize;
+		blockSizeY = height/gridSize;
+		this.setPreferredSize(new Dimension((int)width, (int)height));
+		this.setLocation((int)locX, (int)locY);
+	}
+	
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

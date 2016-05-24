@@ -1,0 +1,33 @@
+package components;
+
+import java.awt.Dimension;
+
+import javax.swing.JPanel;
+
+public class Field extends JPanel
+{
+	private double width, height;
+	private int gridSize;
+	double blockSizeX, blockSizeY;
+	
+	public Field()
+	{
+		width = 640;
+		height = 480;
+		gridSize = 12;
+		init();
+	}
+	public Field(int w, int h, int gS)
+	{
+		width = w;
+		height = h;
+		gridSize = gS;
+		init();
+	}
+	private void init()
+	{
+		blockSizeX = width/gridSize;
+		blockSizeY = height/gridSize;
+		this.setPreferredSize(new Dimension(width, height));
+	}
+}

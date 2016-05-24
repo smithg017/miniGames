@@ -1,0 +1,33 @@
+package components;
+
+public class Player 
+{
+	private int x, y;
+	private double velX, velY;
+	private int width, height;
+	
+	public Player()
+	{
+		setX(10);
+		y = 10;
+		velX = 10;
+		velY = 10;
+		width = 20;
+		height = 20;
+	}
+	public Player(int locX, int locY, double vX, double vY, int w, int h)
+	{
+		setX(locX);
+		y = locY;
+		velX = vX;
+		velY = vY;
+		width = w;
+		height = h;
+	}
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+}

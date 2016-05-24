@@ -1,0 +1,27 @@
+package components;
+
+public class Player 
+{
+	private int x, y;
+	private double velX, velY;
+	private int width, height;
+	
+	public Player()
+	{
+		x = 10;
+		y = 10;
+		velX = 10;
+		velY = 10;
+		width = 20;
+		height = 20;
+	}
+	public Player(int locX, int locY, double vX, double vY, int w, int h)
+	{
+		x = locX;
+		y = locY;
+		velX = vX;
+		velY = vY;
+		width = w;
+		height = h;
+	}
+}
