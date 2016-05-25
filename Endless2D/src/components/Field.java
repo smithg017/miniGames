@@ -1,6 +1,7 @@
 package components;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,7 +12,6 @@ public abstract class Field extends JPanel implements ActionListener
 	
 	private static final long serialVersionUID = -6805038923918428732L;
 	protected double width, height;
-	protected int locX, locY;
 	protected int gridSize;
 	protected double blockSizeX, blockSizeY;
 	
@@ -20,17 +20,13 @@ public abstract class Field extends JPanel implements ActionListener
 		width = 640;
 		height = 480;
 		gridSize = 12;
-		locX = 200;
-		locY = 100;
 		init();
 	}
-	public Field(String name, int w, int h, int gS, int lX, int lY)
+	public Field(String name, int w, int h, int gS)
 	{
 		width = w;
 		height = h;
 		gridSize = gS;
-		locX = lX;
-		locY = lY;
 		init();
 	}
 	private void init()
@@ -38,14 +34,14 @@ public abstract class Field extends JPanel implements ActionListener
 		blockSizeX = width/gridSize;
 		blockSizeY = height/gridSize;
 		this.setPreferredSize(new Dimension((int)width, (int)height));
-		this.setLocation(locX, locY);
 		this.setEnabled(true);
 		this.setFocusable(true);
-		this.setVisible(true);
 	}
 	
 	@Override
 	public abstract void actionPerformed(ActionEvent e);
+	@Override
+	public abstract void paintComponent(Graphics g);
 	
 	public int getGridSize()
 	{
