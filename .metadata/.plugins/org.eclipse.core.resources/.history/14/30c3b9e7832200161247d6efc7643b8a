@@ -1,0 +1,11 @@
+package Dodgem;
+
+import javax.swing.JFrame;
+
+public class DodgemMain 
+{
+	public static void Main(String args[])
+	{
+		JFrame f = new JFrame("Dodgem");
+	}
+}

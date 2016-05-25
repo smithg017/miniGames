@@ -1,0 +1,114 @@
+package Dodgem;
+
+import components.Field;
+
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
+import javax.swing.Timer;
+
+import components.Entity;
+
+public class DodgemField extends Field implements KeyListener
+{
+	private static final long serialVersionUID = 5367865662677506729L;
+	private Entity player;
+	private ArrayList<Entity> enemies;
+	private Timer t;
+	private int counter;
+	public DodgemField()
+	{
+		super();
+		player = new Entity(320, 240, 0, 0, 20, 20, 0, 0);
+		enemies = new ArrayList<Entity>();
+		t = new Timer(5, this);
+		counter = 0;
+		
+		t.start();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		counter++;
+		player.update();
+		if(player.getX() < 0)
+			player.setX(0);
+		else if(player.getX() > 620)
+			player.setX(620);
+		else if(player.getY() < 0)
+			player.setY(0);
+		else if(player.getY() > 460)
+			player.setY(460);
+		for(int j=0; j < enemies.size(); j++)
+		{
+			enemies.get(j).update();
+			if(enemies.get(j).getX() < -20 || enemies.get(j).getX() > 640 || enemies.get(j).getY() > 480 || enemies.get(j).getY() < -20)
+				enemies.remove(j);
+		}
+		
+		if(counter%100 == 0)
+		{
+			int x,y;
+			double velx,vely;
+			double r = Math.random();
+			if(r < .25)
+			{
+				x=-19;
+				y=(int)(Math.random()*480);
+			}
+			else if(r < .5)
+			{
+				x=639;
+				y=(int)(Math.random()*480);
+			}
+			else if(r < .75)
+			{
+				x=(int)(Math.random()*640);
+				y=-19;
+			}
+			else
+			{
+				x=(int)(Math.random()*640);
+				y=479;
+			}
+			velx = (player.getX() - x)/50;
+			vely = (player.getY() - y)/50;
+			enemies.add(new Entity(x, y, velx, vely, 20, 20, 0, 0));
+		}
+	}
+
+	@Override
+	public void paintComponent(Graphics g) 
+	{
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) 
+	{
+		if(KeyEvent.VK_UP == e.getKeyCode())
+			player.setVelY(-2);
+		else if(KeyEvent.VK_DOWN == e.getKeyCode())
+			player.setVelY(2);
+		else if(KeyEvent.VK_LEFT == e.getKeyCode())
+			player.setVelX(-2);
+		else if(KeyEvent.VK_RIGHT == e.getKeyCode())
+			player.setVelX(2);
+	}
+	@Override
+	public void keyReleased(KeyEvent e) 
+	{
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_LEFT)
+			player.setVelX(0);
+		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_DOWN)
+			player.setVelY(0);
+	}
+	@Override
+	public void keyTyped(KeyEvent e) 
+	{
+		
+	}
+	
+}

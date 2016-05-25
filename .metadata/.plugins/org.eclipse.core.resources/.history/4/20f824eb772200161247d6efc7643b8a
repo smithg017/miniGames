@@ -1,0 +1,28 @@
+package Dodgem;
+
+import components.Field;
+
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+import components.Entity;
+
+public class DodgemField extends Field
+{
+	private Entity player;
+	private ArrayList<Entity> enemies;
+	
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		
+	}
+
+	@Override
+	public void paintComponent(Graphics g) 
+	{
+		
+	}
+	
+}

@@ -1,0 +1,57 @@
+package Dodgem;
+
+import components.Field;
+
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+
+import javax.swing.Timer;
+
+import components.Entity;
+
+public class DodgemField extends Field implements KeyListener
+{
+	private static final long serialVersionUID = 5367865662677506729L;
+	private Entity player;
+	private ArrayList<Entity> enemies;
+	private Timer t;
+	public DodgemField()
+	{
+		super();
+		player = new Entity(320, 240, 0, 0, 20, 20, 0, 0);
+		enemies = new ArrayList<Entity>();
+		t = new Timer(5, this);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		player.update();
+		for(Entity x : enemies)
+			x.update();
+	}
+
+	@Override
+	public void paintComponent(Graphics g) 
+	{
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) 
+	{
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) 
+	{
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) 
+	{
+		
+	}
+	
+}

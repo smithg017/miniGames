@@ -1,0 +1,36 @@
+package Dodgem;
+
+import components.Field;
+
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+
+import javax.swing.Timer;
+
+import components.Entity;
+
+public class DodgemField extends Field
+{
+	private Entity player;
+	private ArrayList<Entity> enemies;
+	private Timer t;
+	public DodgemField()
+	{
+		player = new Entity(320, 240, 0, 0, 20, 20, 0, 0);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		player.update();
+		for(Entity x : enemies)
+			x.update();
+	}
+
+	@Override
+	public void paintComponent(Graphics g) 
+	{
+		
+	}
+	
+}
